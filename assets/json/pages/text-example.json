@@ -1,0 +1,15 @@
+{
+    
+    "title": "@strings/text-example/title",
+    "img": "@strings/text-example/img",
+
+
+    "paragraphs": [
+
+        { "header": "@strings/text-example/p1/header", "text": "@strings/text-example/p1/text"},
+        { "header": "@strings/text-example/p2/header", "text": "@strings/text-example/p2/text"},
+        { "header": "@strings/text-example/p3/header", "text": "@strings/text-example/p3/text"},
+        { "header": "@strings/text-example/p4/header", "text": "@strings/text-example/p4/text"}
+    ]
+
+}

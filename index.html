@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asset System</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
+
+    <script src="src/utils/loader.js"></script>
+    <script src="src/utils/strings.js"></script>
+    <script src="src/utils/pagemanager.js"></script>
+
+    <script src="src/filters/translate.js"></script>
+
+    <script src="config.js"></script>
+
+    <script src="src/app.core.js"></script>
+    <script src="src/app.translations.js"></script>
+    <script src="src/app.pagemanager.js"></script>
+
+
+    <script src="src/components/component.main.js"></script>
+    <script src="src/components/component.page.index.js"></script>
+
+
+    <style>
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 2.5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    }
+</style>
+</head>
+<body>    
+    <div id="app"></div>
+    <script>App.start();</script>
+
+    
+</body>
+</html>

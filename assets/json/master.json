@@ -1,0 +1,6 @@
+{
+    "pages": [
+        {"id": "home", "title": "home", "config": "assets/json/pages/home.json", "pageType": "index" }
+    ]
+
+}

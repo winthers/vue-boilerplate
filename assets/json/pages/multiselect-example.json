@@ -1,0 +1,16 @@
+{
+    "header": "@strings/multiselect-example/header",
+    "objective": "@strings/multiselect-example/objective",
+    "btnSubmitText": "@strings/global/btnSubmitText",
+
+    "feedback": {
+      "correct": "@string/multiselect-example/correct",
+      "incorrect": "@string/multiselect-example/incorrect"
+    },
+
+    "responses": [
+        {"id": 0, "text": "@strings/multiselect-example/response-1", "correct": true},
+        {"id": 1, "text": "@strings/multiselect-example/response-2", "correct": true},
+        {"id": 2, "text": "@strings/multiselect-example/response-2"}
+    ] 
+}

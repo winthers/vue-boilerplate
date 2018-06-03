@@ -1,0 +1,15 @@
+{
+    "title": "video title",
+    "video": {
+        "src": "@strings/video-example/video",
+        "poster": "",
+
+        "loop": false,
+        "muted": false,
+        "autoplay": false,
+        "controls": true,
+        "preload": "auto"
+    },
+
+    "text": "@strings/video-example/text"
+}

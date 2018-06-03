@@ -1,0 +1,15 @@
+{
+    "header": "header",
+    "objective": "objective",
+    "btnSubmitText": "submit",
+    "feedback": {
+        "correct": "correct",
+        "incorrect": "incorrect"
+    },
+    "responses": [
+        {"title": "item-1", "order": 3},
+        {"title": "item-2", "order": 2},
+        {"title": "item-3", "order": 1},
+        {"title": "item-4", "order": 0}
+    ]
+}
