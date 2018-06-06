@@ -1,8 +1,9 @@
 (function(){
 
+    // Create the App Object.
+    // ----------------------------------------------------------
     var App = {};
     window.App = App;
-
     App.config = config;
 
 
@@ -12,7 +13,6 @@
     App.registrateAsset = function (name, loader) {
         App.assets[name] = loader;
     }
-
 
 
     // Bootstrap Actions
@@ -30,7 +30,6 @@
         }
 
         bootstrapActions.push(payload);
-        
     };
 
     function executebootstrapActions () {
@@ -52,8 +51,6 @@
     App.addSetupSubscriber = (fn) =>  {
         startupSubscribers.push(fn)
     }
-
-
 
 
     // Setup & Start
@@ -78,7 +75,7 @@
           2. Create the App.radio and App.vm attributes.
           3. Run the bootstrapping actions.
           4. Notify the Setup subscribers
-          5. Set loading to false & Inject the IndexPage (should be defined in a router as the '' route )
+          5. Set loading to false & Inject the IndexPage (should be defined in a router as the '' route git)
         ***********************************************************************************************/
 
         var ComponentClass = Vue.extend(ComponentMain);
