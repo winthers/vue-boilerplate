@@ -92,7 +92,5 @@
             console.error("failed to start the application: '%s'", e);
         })
     }
-
-
-
-}())
+    
+}());
