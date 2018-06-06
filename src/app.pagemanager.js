@@ -22,28 +22,30 @@
 
 
     App.injectPage = function (id) {
-        var container = document.querySelector("#content-container");
+        //var container = document.querySelector("#content-container");
 
 
 
         var ComponentClass = Vue.extend(App.pageFactory.get(id));
-        var instance = new ComponentClass()
-            instance.$mount();
-            container.appendChild(instance.$el)
+        var instance = new ComponentClass({
+            parent: App.vm
+        })
+        instance.$mount();
+          //  container.appendChild(instance.$el)
 
             
-            instance.$once("beforeDestroy", ()=> {
-
-                alert("ass tits")
-            })
+        instance.$once("beforeDestroy", ()=> {
+                // ..
+        })
             
+        instance.$nextTick().then(()=>{
+            App.vm.$refs.container.appendChild(instance.$el)
+           
+        })
+       
+        currentPageInstance = instance;
 
-            currentPageInstance = instance;
-
-        // Apply some kind of transition flow here ?
-        // currentPage.transitionOut /transition out Complete?
-
-        // maybe find a way to inject dynamic component in the main vm to leverage the transition system ?
+        // Find a way to inject dynamic component in the main vm to leverage the transition system ?
     }
 
 

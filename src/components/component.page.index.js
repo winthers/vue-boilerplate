@@ -1,7 +1,7 @@
 var ComponentPageIndex = {
 
     template: `
-        <transition appear name="fade">
+        <transition name="fade">
             <div>
                 <h1>{{ title | translate }}</h1>
                 <p>
@@ -16,6 +16,9 @@ var ComponentPageIndex = {
         return App.assets.pages.get(App.pageManager.currentPage());
     }
 };
+
+
+// skal laves om så jeg bruge dynamic components istædet. 
 
 
 App.pageFactory.registrate("index", ComponentPageIndex);

@@ -60,7 +60,11 @@
 
         notifySetupSubscribers();
         App.vm.$data.loading = false;
-        App.injectPage("index");
+
+    
+
+            App.injectPage("index");
+       
     }
     
    
@@ -75,7 +79,7 @@
           2. Create the App.radio and App.vm attributes.
           3. Run the bootstrapping actions.
           4. Notify the Setup subscribers
-          5. Set loading to false & Inject the IndexPage (should be defined in a router as the '' route git)
+          5. Calling Setup -  Set loading to false & Inject the IndexPage (should be defined in a router as the '' route).
         ***********************************************************************************************/
 
         var ComponentClass = Vue.extend(ComponentMain);
@@ -85,12 +89,14 @@
         App.radio = new Vue({}); 
         App.vm = instance;
 
-
-        executebootstrapActions().then(()=>{
-            setUp();
-        }).catch(e => {
-            console.error("failed to start the application: '%s'", e);
-        })
+        // Make sure the instance have been mounted proberly by using next tick.
+        instance.$nextTick().then(()=>{
+            executebootstrapActions().then(()=>{
+                setUp();
+            }).catch(e => {
+                console.error("failed to start the application: '%s'", e);
+            })
+        });
     }
-    
+
 }());
