@@ -60,17 +60,26 @@
     // ----------------------------------------------------------
 
     let setUp = () => {
-        // do application level stuff here.
-        notifySetupSubscribers();
-        
-        App.vm.$data.loading = false;
 
+        notifySetupSubscribers();
+        App.vm.$data.loading = false;
         App.injectPage("index");
     }
     
    
 
     App.start = function () {
+        
+        /***********************************************************************************************
+          Start Flow:
+          ============
+          1. Create and mounte an instance of the 'ComponentMain' and insert it in to the dom.
+             The Components loading property is sat to true, so its loading screen will be shown.
+          2. Create the App.radio and App.vm attributes.
+          3. Run the bootstrapping actions.
+          4. Notify the Setup subscribers
+          5. Set loading to false & Inject the IndexPage (should be defined in a router as the '' route )
+        ***********************************************************************************************/
 
         var ComponentClass = Vue.extend(ComponentMain);
         var instance = new ComponentClass()
