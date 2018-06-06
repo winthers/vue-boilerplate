@@ -76,6 +76,7 @@
         var instance = new ComponentClass()
             instance.$mount();
         document.getElementById("app").appendChild(instance.$el)
+        App.radio = new Vue({}); 
         App.vm = instance;
 
 
