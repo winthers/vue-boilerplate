@@ -47,30 +47,12 @@
 
 
 
-    // Hack to get backbone.history to call the /404 route if no routes are matched.
-    var _loadUrl = Backbone.history.loadUrl;
-    Backbone.history.loadUrl = function (fragment) {
-        var result = _loadUrl.apply(Backbone.history, fragment);
-        // the loadUrl returns false if no route was found.
-        if(!result){
-            // call 404 route on router
-            var handler = Backbone.history.handlers.filter( o => o.route.test("404") )
-            if(handler.length) {
-                Backbone.history.navigate("/404")
-
-            }
-        }
-    };
-
-      
 
     var Router = Backbone.Router.extend({
         routes: {
-            "":                 "index",    
-            "page2":            "page2",
-            "search/:query":        "search",  // #search/kiwis
-            "search/:query/page:id": "search",  // #search/kiwis/page7 => kiwis 7
-            "404": "pageNotFound"
+            "":                      "index",    
+            "page2":                 "page2",
+            "*404":                  "pageNotFound" // *404 is key
         },
 
         index: function() {
@@ -85,6 +67,7 @@
         },
         pageNotFound: function () {
             alert("trigger pageNotFound route")
+            Backbone.history.navigate("/page-not-found")
         }
 
     });
