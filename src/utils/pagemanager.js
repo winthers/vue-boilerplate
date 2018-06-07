@@ -23,7 +23,10 @@ PageManager.prototype = {
         var temp = [];
         pages.forEach(o => { 
             if(temp.indexOf(o.id)<0)
-               temp.push(o.id);
+               temp.push({
+                    id:       o.id,
+                    type:     o.pageType
+               });
             else
             throw new Error("Configuration Error, dublicate page id's: '"+ o.id +"' in master.json")
         })
@@ -43,8 +46,8 @@ PageManager.prototype = {
     goto: function (pageId) {
         var index = -1;
         var exists = false;
-        this.pages.forEach((id, i)=>{
-            if(id == pageId){
+        this.pages.forEach((o, i)=>{
+            if(o.id == pageId){
                 exists = true;
                 index = i;
             }
@@ -52,6 +55,7 @@ PageManager.prototype = {
         if(exists) {
             this.index = index;
             this.navigate();
+            return true;
         }
         return false;
     },

@@ -140,3 +140,8 @@ Sometimes we just want a reference to a single string, say a video that could be
     }
 
 ```
+
+
+## Routing 
+
+routing is handled using [backbone](http://backbonejs.org)

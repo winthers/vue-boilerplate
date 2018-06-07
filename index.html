@@ -9,34 +9,106 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
 
-    <script src="src/utils/loader.js"></script>
-    <script src="src/utils/strings.js"></script>
-    <script src="src/utils/pagemanager.js"></script>
 
-    <script src="src/filters/global.js"></script>
 
     <script src="config.js"></script>
 
+    <script src="src/utils/loader.js"></script>
+    <script src="src/utils/strings.js"></script>
+    <script src="src/utils/pagemanager.js"></script>
+    <script src="src/filters/global.js"></script>
     <script src="src/app.core.js"></script>
     <script src="src/app.translations.js"></script>
     <script src="src/app.pagemanager.js"></script>
 
-
     <script src="src/components/component.main.js"></script>
     <script src="src/components/component.page.index.js"></script>
+
+    <script src="node_modules/navigo/lib/navigo.min.js"></script>
+
+
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="http://backbonejs.org/backbone.js"></script>
 
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/app.css">
 
 <style>
 
-    .fade-enter-active, .fade-leave-active {
+.fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 </style>
+
+<script>
+
+
+
+    // Hack to get backbone.history to call the /404 route if no routes are matched.
+    var _loadUrl = Backbone.history.loadUrl;
+    Backbone.history.loadUrl = function (fragment) {
+        var result = _loadUrl.apply(Backbone.history, fragment);
+        // the loadUrl returns false if no route was found.
+        if(!result){
+            // call 404 route on router
+            var handler = Backbone.history.handlers.filter( o => o.route.test("404") )
+            if(handler.length) {
+                Backbone.history.navigate("/404")
+
+            }
+        }
+    };
+
+      
+
+    var Router = Backbone.Router.extend({
+        routes: {
+            "":                 "index",    
+            "page2":            "page2",
+            "search/:query":        "search",  // #search/kiwis
+            "search/:query/page:id": "search",  // #search/kiwis/page7 => kiwis 7
+            "404": "pageNotFound"
+        },
+
+        index: function() {
+            App.pageManager.goto("index");
+        },
+
+        page2: function () {
+            App.pageManager.goto("page2");
+        },
+        search: function(query, page) {
+            console.warn("search", query, page)
+        },
+        pageNotFound: function () {
+            alert("trigger pageNotFound route")
+        }
+
+    });
+
+
+
+
+
+    var router =  new Router();
+
+
+
+
+  
+
+
+
+
+    App.router = { start: ()=>{
+        console.log(Backbone.history.start({pushState: false}));
+    }}
+
+
+</script>
 
 </head>
 <body>    

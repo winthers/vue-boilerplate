@@ -1,5 +1,9 @@
 {
-    "home/title":  {"en": "Hello world" },
-    "home/body":   {"en": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere molestiae sunt pariatur voluptatum vel recusandae odit, fugit dolorem, id itaque vero a nesciunt expedita suscipit, nemo assumenda voluptates iusto architecto?" },
-    "home/img":    {"en": "assets/img/test.jpg"}
+    "index/title":  {"en": "Hello world" },
+    "index/body":   {"en": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere molestiae sunt pariatur voluptatum vel recusandae odit, fugit dolorem, id itaque vero a nesciunt expedita suscipit, nemo assumenda voluptates iusto architecto?" },
+    "index/img":    {"en": "assets/img/test.jpg"},
+
+    "page2/title":  {"en": "This is Page2" },
+    "page2/body":   {"en": "This is the content of page 2" },
+    "page2/img":    {"en": "assets/img/test.jpg"}
 }

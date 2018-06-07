@@ -30,38 +30,14 @@
 
         if (App.pageFactory.has(id)) {
             // test native components
-            App.vm.currentPageComponent = id;
+            // allows to add pages of same type.
+            App.vm.currentPageComponent = "";
+            App.vm.$nextTick().then(()=>{
+                App.vm.currentPageComponent = id;
+            })
         }else {
             alert(`ERROR: Attempting to show the page "${id}" that does not exist.. Has it been registrated?`);
         }
-        
-
-        /*
-        //var container = document.querySelector("#content-container");
-
-
-
-        var ComponentClass = Vue.extend(App.pageFactory.get(id));
-        var instance = new ComponentClass({
-            parent: App.vm
-        })
-        instance.$mount();
-          //  container.appendChild(instance.$el)
-
-            
-        instance.$once("beforeDestroy", ()=> {
-                // ..
-        })
-            
-        instance.$nextTick().then(()=>{
-            App.vm.$refs.container.appendChild(instance.$el)
-           
-        })
-       
-        currentPageInstance = instance;
-
-        // Find a way to inject dynamic component in the main vm to leverage the transition system ?
-        */
     }
 
 
@@ -97,9 +73,10 @@
     App.addSetupSubscriber(()=>{
 
         pagemanager = new PageManager({
-            navigate: function(pageID) {
-                console.log("navigate to '%s'", pageID);
-                console.log("pageData", JSON.stringify(App.assets.pages.get(pageID)));
+            navigate: function(page) {
+                console.log("pagemanager.navigate => '%s'", JSON.stringify(page));
+                console.log("- pageData", JSON.stringify(App.assets.pages.get(page.id)));
+                App.injectPage(page.type);
                 
             }
         })
@@ -109,7 +86,7 @@
         pagemanager.currentPageInstance =  function () {
             return currentPageInstance;
         };
-        pagemanager.start();
+       // pagemanager.start();
 
     });
 

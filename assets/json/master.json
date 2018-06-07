@@ -1,6 +1,6 @@
 {
     "pages": [
-        {"id": "home", "title": "home", "config": "assets/json/pages/home.json", "pageType": "index" }
+        {"id": "index", "title": "The Home Page", "config": "assets/json/pages/index.json", "pageType": "index" },
+        {"id": "page2", "title": "The Page two",  "config": "assets/json/pages/page2.json", "pageType": "index" }
     ]
-
 }

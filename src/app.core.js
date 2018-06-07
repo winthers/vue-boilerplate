@@ -59,7 +59,9 @@
     let setUp = () => {
         notifySetupSubscribers();
         App.vm.$data.loading = false;
-        App.injectPage("index");
+
+        // call router.resolve witch in turn should call the on pageManager.navigate 
+        App.router.start();
     }
     
    

@@ -13,7 +13,7 @@ var ComponentPageIndex = {
     `,
 
     data: function () {
-        return App.assets.pages.get(App.pageManager.currentPage());
+        return App.assets.pages.get(App.pageManager.currentPage().id);
     }
 };
 
