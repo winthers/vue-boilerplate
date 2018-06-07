@@ -14,8 +14,8 @@
 
         strings.setData(App.assets.strings.get("strings"));
         
+        // Create the App.translate Api.
         App.translate = function (id, language) {
-
             let stringID = /^@string(?:s)?/.test(id) ? id.replace(/@string(?:s)?\//, "") : id;
             return strings.translate(stringID, language || App.config.language);
         }

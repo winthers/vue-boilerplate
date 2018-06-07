@@ -7,12 +7,16 @@
     App.pageFactory = {
 
         registrate: function (id, component) {
-            pages[id] = component;
+            //pages[id] = component;
+            pages[id] = true;
+
+            // trying to registrate the component as a global component.
+            Vue.component(id, component);
         },
 
-        get: function (id) {
-            return pages[id];
-        },
+        // get: function (id) {
+        //     return pages[id];
+        // },
 
         has: function (id) {
             return pages.hasOwnProperty(id);
@@ -22,6 +26,17 @@
 
 
     App.injectPage = function (id) {
+
+
+        if (App.pageFactory.has(id)) {
+            // test native components
+            App.vm.currentPageComponent = id;
+        }else {
+            alert(`ERROR: Attempting to show the page "${id}" that does not exist.. Has it been registrated?`);
+        }
+        
+
+        /*
         //var container = document.querySelector("#content-container");
 
 
@@ -46,6 +61,7 @@
         currentPageInstance = instance;
 
         // Find a way to inject dynamic component in the main vm to leverage the transition system ?
+        */
     }
 
 

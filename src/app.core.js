@@ -57,14 +57,9 @@
     // ----------------------------------------------------------
 
     let setUp = () => {
-
         notifySetupSubscribers();
         App.vm.$data.loading = false;
-
-    
-
-            App.injectPage("index");
-       
+        App.injectPage("index");
     }
     
    
@@ -84,8 +79,8 @@
 
         var ComponentClass = Vue.extend(ComponentMain);
         var instance = new ComponentClass()
-            instance.$mount();
-        document.getElementById("app").appendChild(instance.$el)
+            instance.$mount("#app"); // replace the #app element with the component
+    
         App.radio = new Vue({}); 
         App.vm = instance;
 

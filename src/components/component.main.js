@@ -1,23 +1,43 @@
+
+
+/**
+ * This component is the Root Vue Instance, 
+ * and becomes the App.vm.
+ * 
+ * This is where the root regions should be defined, for menues and such.
+ */
 var ComponentMain = {
 
     template: `
-        <div>
-        <transition name="fade">
-            <div v-if="loading"> 
+
+        <div id="app">
+            <div class="loading-screen" v-if="loading"> 
                 <h1>Loading</h1>
             </div>
-        </transition>
-            
-        
-            <div id="content-container" ref="container"></div>
-        
+
+            <div class="page-container" ref="container">
+                <transition
+                    name="custom-classes-transition"
+                    enter-active-class="animated tada"
+                    leave-active-class="animated bounceOutRight">
+                        
+                    <!-- Shows the current Page -->
+                    <component v-bind:is="currentPageComponent"></component>
+
+                </transition>
+            </div>
         </div>
     `,
 
 
     data: function () {
         return {
-            loading: true
+            
+            // Indicates weather or not the loading screen should be shown.
+            loading: true,
+
+            // The id of the current Page Component shown above.
+            currentPageComponent: ""
         }
     }
 }
